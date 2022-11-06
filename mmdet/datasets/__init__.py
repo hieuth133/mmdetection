@@ -16,6 +16,7 @@ from .voc import VOCDataset
 from .wider_face import WIDERFaceDataset
 from .xml_style import XMLDataset
 
+from .plate import PlateDataset
 __all__ = [
     'XMLDataset', 'CocoDataset', 'DeepFashionDataset', 'VOCDataset',
     'CityscapesDataset', 'LVISDataset', 'LVISV05Dataset', 'LVISV1Dataset',
@@ -23,5 +24,5 @@ __all__ = [
     'get_loading_pipeline', 'CocoPanopticDataset', 'MultiImageMixDataset',
     'OpenImagesDataset', 'OpenImagesChallengeDataset',
     'AspectRatioBatchSampler', 'ClassAwareSampler', 'MultiSourceSampler',
-    'GroupMultiSourceSampler', 'BaseDetDataset', 'CrowdHumanDataset'
+    'GroupMultiSourceSampler', 'BaseDetDataset', 'CrowdHumanDataset', 'PlateDataset',
 ]
