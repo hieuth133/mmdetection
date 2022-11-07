@@ -68,7 +68,7 @@ model = dict(
     # In order to align the source code, the threshold of the val phase is
     # 0.01, and the threshold of the test phase is 0.001.
     test_cfg=dict(score_thr=0.01, nms=dict(type='nms', iou_threshold=0.65)))
-
+``
 # dataset settings
 dataset_type = 'PlateDataset'
 data_root = '../datasets/'
@@ -140,14 +140,14 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=8,
-    num_workers=4,
+    batch_size=16,
+    num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=train_dataset)
 val_dataloader = dict(
-    batch_size=8,
-    num_workers=4,
+    batch_size=16,
+    num_workers=2,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
@@ -155,7 +155,7 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         ann_file='val/annotations/joined_500.json',
-        data_prefix=dict(img='val2017/'),
+        data_prefix=dict(img='val/images'),
         test_mode=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
@@ -169,7 +169,7 @@ test_evaluator = val_evaluator
 # training settings
 max_epochs = 50
 num_last_epochs = 15
-interval = 10
+interval = 5
 
 train_cfg = dict(max_epochs=max_epochs, val_interval=interval)
 
@@ -236,4 +236,4 @@ custom_hooks = [
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (1 GPUs) x (8 samples per GPU)
-auto_scale_lr = dict(base_batch_size=8)
+auto_scale_lr = dict(base_batch_size=16)
